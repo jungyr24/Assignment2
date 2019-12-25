@@ -1,12 +1,9 @@
 package ui;
 
-import data.ProductDAOImpl;
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionListener;
-
 public class AppMain extends JFrame implements View {
 
     private JPanel labelPanel, inputPanel, btnPanel; // p1, p2, p3
@@ -19,12 +16,13 @@ public class AppMain extends JFrame implements View {
     private JPanel startPanel;
 
     public AppMain() {
-            startPanel = new JPanel();
-            startPanel.setLayout(new BorderLayout());
-            startUI();
-            add(startPanel);
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            setSize(800, 300);
+        startPanel = new JPanel();
+        startPanel.setLayout(new BorderLayout());
+        startUI();
+        add(startPanel);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(800, 300);
+        setVisible(true);
         setListPrintPanel();
     }
 
@@ -161,20 +159,36 @@ public class AppMain extends JFrame implements View {
     }
 
     //=============Getter And Setter===================
-    public String getComboBoxManageItem() {
-        return cb.getSelectedItem().toString();
+
+    @Override
+    public void setProductName(String text) {
+        tfProductName.setText(text);
     }
 
-    public String getProductName() {
-        return tfProductName.getText();
+    @Override
+    public int getComboBoxIndex() {
+        return cb.getSelectedIndex();
     }
 
-    public String getProductPrice() {
-        return tfPrice.getText();
+    @Override
+    public void setProductPrice(String text) {
+        tfPrice.setText(text);
     }
 
+    @Override
     public String getManufacturer() {
         return tfManufacturer.getText();
+    }
+
+
+    @Override
+    public void setManufacture(String text) {
+        tfManufacturer.setText(text);
+    }
+
+    @Override
+    public String getProductName() {
+        return tfProductName.getText();
     }
     //=============Getter And Setter===================
 
@@ -183,6 +197,31 @@ public class AppMain extends JFrame implements View {
         btnAddInfo.addActionListener(listener);
         btnPrint.addActionListener(listener);
         btnDelete.addActionListener(listener);
+    }
+
+    @Override
+    public void setMessage(String text) {
+        lblMessage.setText(text);
+    }
+
+    @Override
+    public JButton getBtnAddInfo() {
+        return btnAddInfo;
+    }
+
+    @Override
+    public JButton getBtnPrint() {
+        return btnPrint;
+    }
+
+    @Override
+    public JButton getBtnDelete() {
+        return btnDelete;
+    }
+
+    @Override
+    public int getProductPrice() {
+        return Integer.parseInt(tfPrice.getText());
     }
 
 
