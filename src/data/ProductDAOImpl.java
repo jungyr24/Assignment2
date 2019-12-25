@@ -2,10 +2,11 @@ package data;
 
 import data.dao.Product;
 
-public class ProductDAOImpl implements  ProductDAO{
+public class ProductDAOImpl implements ProductDAO {
     private static ProductDAO INSTANCE = null;
+
     public static ProductDAO getInstance() {
-        if(INSTANCE == null)
+        if (INSTANCE == null)
             INSTANCE = new ProductDAOImpl();
         return INSTANCE;
 
