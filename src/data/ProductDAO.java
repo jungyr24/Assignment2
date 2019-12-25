@@ -10,5 +10,7 @@ public interface ProductDAO {
 
     boolean updateProduct(Product product);
 
+    Product getProduct(int index);
+
 
 }

@@ -28,6 +28,5 @@ public interface View {
 
     int getComboBoxIndex();
 
-
     void refreshData();
 }

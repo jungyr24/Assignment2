@@ -8,6 +8,8 @@ public class AppMain extends JFrame implements View {
 
     private JPanel labelPanel, inputPanel, btnPanel; // p1, p2, p3
     private JComboBox cb;
+
+
     private JLabel lblMessage; // ml
     private JLabel lblManageNumber, lblProductName, lblPrice, lblManufacturer;
     private JTextArea listPrintArea;
@@ -23,17 +25,26 @@ public class AppMain extends JFrame implements View {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 300);
         setVisible(true);
+
+    }
+
+
+    private void startUI() {
+        setMessageLabel(); //ml
+        setLabelPanel(); //p1
+        setInputPanel(); //p2
+        setBtnPanel(); //p3
         setListPrintPanel();
     }
 
-    public void setMessageLabel() {
-
+    private void setMessageLabel() {
         lblMessage = new JLabel();
         startPanel.add(lblMessage, BorderLayout.PAGE_START);
         lblMessage.setText("##메시지: 프로그램이 시작되었습니다.!!"); // TODO : 메세지 부분
     }
 
-    public void setLabelPanel() {  // p1
+
+    private void setLabelPanel() {  // p1
         labelPanel = new JPanel();
         labelPanel.setLayout(new GridLayout(4, 1));
 
@@ -62,16 +73,6 @@ public class AppMain extends JFrame implements View {
         tfProductName = new JTextField(10);
         tfPrice = new JTextField(10);
         tfManufacturer = new JTextField(10);
-
-        setVisible(true);
-    }
-
-    private void startUI() {
-        setMessageLabel(); //ml
-        setLabelPanel(); //p1
-        setInputPanel(); //p2
-        setBtnPanel(); //p3
-        setListPrintPanel();
         inputPanel.add(cb);
 
 
@@ -82,6 +83,8 @@ public class AppMain extends JFrame implements View {
         startPanel.add(inputPanel, BorderLayout.CENTER);
 
     }
+
+
 
     public void setBtnPanel() {
         btnPanel = new JPanel();
@@ -114,11 +117,13 @@ public class AppMain extends JFrame implements View {
     }
 
 
-    // TODO
+
+    @Override
     public void refreshData() {
         listPrintArea.setText("");
         String[] cbIndex = {"1", "2", "3"};
         cb.setModel(new DefaultComboBoxModel(cbIndex));
+
 
         clearField();
        //editmode = false; // 현재 상태가 데이터 조회 후 상태인지, 새로운 데이터를 입력하기 위한 상태인지 설정하는 변수
@@ -154,11 +159,9 @@ public class AppMain extends JFrame implements View {
         tfManufacturer.setText("");
         tfPrice.setText("");
         tfProductName.setText("");
-
-
     }
-
     //=============Getter And Setter===================
+
 
     @Override
     public void setProductName(String text) {
@@ -168,6 +171,15 @@ public class AppMain extends JFrame implements View {
     @Override
     public int getComboBoxIndex() {
         return cb.getSelectedIndex();
+    }
+
+
+    @Override
+    public int getProductPrice() {
+        if (!tfPrice.getText().equals("")) {
+            return 0;
+        } else return Integer.parseInt(tfPrice.getText());
+
     }
 
     @Override
@@ -190,7 +202,6 @@ public class AppMain extends JFrame implements View {
     public String getProductName() {
         return tfProductName.getText();
     }
-    //=============Getter And Setter===================
 
     @Override
     public void attachActionListener(ActionListener listener) {
@@ -217,11 +228,6 @@ public class AppMain extends JFrame implements View {
     @Override
     public JButton getBtnDelete() {
         return btnDelete;
-    }
-
-    @Override
-    public int getProductPrice() {
-        return Integer.parseInt(tfPrice.getText());
     }
 
 
