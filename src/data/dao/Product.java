@@ -13,7 +13,7 @@ public class Product {
         this.manufacture = manufacture;
     }
 
-    public int getPrcdoe() {
+    public int getPrcode() {
         return prcdoe;
     }
 

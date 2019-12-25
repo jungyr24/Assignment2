@@ -1,5 +1,6 @@
 package ui;
 
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -18,6 +19,7 @@ public class AppMain extends JFrame implements View {
     private JPanel startPanel;
 
     public AppMain() {
+
         startPanel = new JPanel();
         startPanel.setLayout(new BorderLayout());
         startUI();
@@ -126,13 +128,13 @@ public class AppMain extends JFrame implements View {
 
 
         clearField();
-       //editmode = false; // 현재 상태가 데이터 조회 후 상태인지, 새로운 데이터를 입력하기 위한 상태인지 설정하는 변수
+        /*editmode = false; // 현재 상태가 데이터 조회 후 상태인지, 새로운 데이터를 입력하기 위한 상태인지 설정하는 변수
 
         listPrintArea.append("관리번호\t상품명\t\t단가\t제조사\n");
-        //datas = ProductDAOImpl.getAll();
+        datas = ProductDAO.getAll();
 
         // 데이터를 변경하면 콤보박스 데이터 갱신
-       /* cb.setModel(new DefaultComboBoxModel(dao.getItems())); //togo
+        cb.setModel(new DefaultComboBoxModel(ProductDAO.getItems())); //togo
 
         if(datas != null) {
             for(Product p : datas){
